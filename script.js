@@ -60,14 +60,14 @@ for (let i = 0; i < 6; i++) {
             checkCorrectness(wordArray)
 
             if (word === todaysWord) {
-                const playAgain = document.createElement("h2")
+                const playAgain = document.createElement("button")
                 playAgain.textContent = "You win! Click here to play again?"
                 gameContainer.appendChild(playAgain)
                 playAgain.addEventListener("click", () => location.reload())
-                const hdr = document.querySelector('header')
+                const hdr = document.querySelector('body')
                 if (hdr) hdr.classList.add('win-flash')
             } else if (activeRow === 5) {
-                const playAgain = document.createElement("h2")
+                const playAgain = document.createElement("button")
                 playAgain.textContent = `You lose! The word was ${todaysWord}. Click here to play again?`
                 gameContainer.appendChild(playAgain)
                 playAgain.addEventListener("click", () => location.reload())
@@ -149,7 +149,6 @@ fetch("https://words.dev-apis.com/word-of-the-day?random=1")
     .then((response) => response.json())
     .then((data) => {
         todaysWord = data.word;
-        console.log(todaysWord)
     });
 
 

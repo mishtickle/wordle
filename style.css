@@ -60,7 +60,7 @@ input{
 }
 
 .win-flash {
-    animation: headerFlash 0.9s linear 0s 4;
+    animation: headerFlash 0.9s linear 0s infinite;
 }
 .yellow{
     background-color: yellow;
