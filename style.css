@@ -4,6 +4,29 @@ header{
     margin-bottom: 2rem;
 }
 
+input{
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    background: transparent;
+    color: black;
+}
+
+#loading-icon {
+    margin-top: 2rem;
+}
+
+#loading-icon.hidden {
+    display: none;
+}
+
 .game-container{
     display: flex;
     align-items: center;
@@ -21,21 +44,6 @@ header{
     margin: 10px;
 }
 
-input{
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border: 1px solid black;
-    text-align: center;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    background: transparent;
-    color: black;
-}
-
 .letter-container.green input {
     background-color: green;
     color: white;
@@ -49,14 +57,6 @@ input{
 .letter-container.lightgrey input {
     background-color: lightgrey;
     color: black;
-}
-
-@keyframes headerFlash {
-    0% { background-color: #22c55e; color: white; }
-    25% { background-color: #60a5fa; color: white; }
-    50% { background-color: #f59e0b; color: black; }
-    75% { background-color: #a78bfa; color: white; }
-    100% { background-color: #22c55e; color: white; }
 }
 
 .win-flash {
@@ -74,30 +74,6 @@ input{
     background-color: lightgrey;
 }
 
-@keyframes invalidBorder {
-    0% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
-    50% { box-shadow: 0 0 0 6px rgba(239,68,68,0.25); }
-    100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
-}
-
-.letter-container.invalid input {
-    border-color: #ef4444;
-    animation: invalidBorder 0.6s ease;
-}
-
-#loading-icon {
-    margin-top: 2rem;
-}
-
-#loading-icon.hidden {
-    display: none;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 .spinner {
     width: 40px;
     height: 40px;
@@ -106,3 +82,28 @@ input{
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
+
+.letter-container.invalid input {
+    border-color: #ef4444;
+    animation: invalidBorder 0.6s ease;
+}
+
+@keyframes invalidBorder {
+    0% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+    50% { box-shadow: 0 0 0 6px rgba(239,68,68,0.25); }
+    100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes headerFlash {
+    0% { background-color: #22c55e; color: white; }
+    25% { background-color: #60a5fa; color: white; }
+    50% { background-color: #f59e0b; color: black; }
+    75% { background-color: #a78bfa; color: white; }
+    100% { background-color: #22c55e; color: white; }
+}
+
