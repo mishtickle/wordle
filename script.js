@@ -66,19 +66,28 @@ for (let i = 0; i < NUMBER_OF_GUESSES; i++) {
     }
 
     const inputsInRow = Array.from(rows[activeRow].querySelectorAll("input"));
-    const rowFilled = inputsInRow.every((i) => i.value.length === 1);
+    const rowFilled = inputsInRow.every(
+      (character) => character.value.length === 1,
+    );
 
     if (rowFilled) {
-      word = inputsInRow.map((i) => i.value.toLowerCase()).join("");
+      word = inputsInRow
+        .map((character) => character.value.toLowerCase())
+        .join("");
 
       if (isLoading) return;
       const valid = await response(word);
       if (!valid) {
         const letterContainers =
           rows[activeRow].querySelectorAll(".letter-container");
-        letterContainers.forEach((c) => c.classList.add("invalid"));
+        letterContainers.forEach((character) =>
+          character.classList.add("invalid"),
+        );
         setTimeout(
-          () => letterContainers.forEach((c) => c.classList.remove("invalid")),
+          () =>
+            letterContainers.forEach((character) =>
+              character.classList.remove("invalid"),
+            ),
           700,
         );
         inputsInRow.forEach((character) => (character.value = ""));
