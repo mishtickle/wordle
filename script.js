@@ -105,6 +105,7 @@ function checkCorrectness(wordArr) {
             letterContainer.classList.add("green")
         } else if (todaysWord.includes(letter)) {
             letterContainer.classList.add("yellow")
+            wordArr[index] = "" // Prevent duplicate yellow for same letter
         } else {
             letterContainer.classList.add("lightgrey")
         }
