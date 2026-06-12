@@ -1,3 +1,6 @@
+const NUMBER_OF_GUESSES = 6;
+const WORD_LENGTH = 5;
+
 let word = "";
 let wordArray = ["", "", "", "", ""];
 
@@ -26,13 +29,13 @@ function disableAllInputs(disabled) {
   });
 }
 
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < NUMBER_OF_GUESSES; i++) {
   const row = document.createElement("div");
   row.classList.add("row");
   row.dataset.row = i;
   gameContainer.appendChild(row);
 
-  for (let j = 0; j < 5; j++) {
+  for (let j = 0; j < WORD_LENGTH; j++) {
     const letterContainer = document.createElement("div");
     letterContainer.classList.add("letter-container");
     const input = document.createElement("input");
