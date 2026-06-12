@@ -1,9 +1,7 @@
 const NUMBER_OF_GUESSES = 6;
 const WORD_LENGTH = 5;
-
 let word = "";
 let wordArray = ["", "", "", "", ""];
-
 let activeRow = 0;
 let isLoading = false;
 const gameContainer = document.querySelector(".game-container");
@@ -83,6 +81,7 @@ for (let i = 0; i < NUMBER_OF_GUESSES; i++) {
           () => letterContainers.forEach((c) => c.classList.remove("invalid")),
           700,
         );
+        inputsInRow.forEach((character) => (character.value = ""));
         return;
       }
 
