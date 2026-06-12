@@ -99,17 +99,32 @@ function isLetter(letter) {
 }
 
 function checkCorrectness(wordArr) {
+    const targetLetters = todaysWord.split("")
+    const result = Array(5).fill(null)
+
+    // First pass: mark greens and remove exact matches from target letter pool.
     wordArr.forEach((letter, index) => {
         const letterContainer = rows[activeRow].querySelector(`input[data-id="${index + 1}"]`).parentElement
-        if (letter === todaysWord[index]) {
+        if (letter === targetLetters[index]) {
             letterContainer.classList.add("green")
-        } else if (todaysWord.includes(letter)) {
+            result[index] = "green"
+            targetLetters[index] = null
+        }
+    })
+
+    // Second pass: mark yellows only for remaining unmatched letters.
+    wordArr.forEach((letter, index) => {
+        const letterContainer = rows[activeRow].querySelector(`input[data-id="${index + 1}"]`).parentElement
+        if (result[index]) return
+
+        const matchIndex = targetLetters.indexOf(letter)
+        if (matchIndex !== -1) {
             letterContainer.classList.add("yellow")
-            wordArr[index] = "" // Prevent duplicate yellow for same letter
+            targetLetters[matchIndex] = null
         } else {
             letterContainer.classList.add("lightgrey")
         }
-    })  
+    })
 }
 
 
@@ -134,6 +149,7 @@ fetch("https://words.dev-apis.com/word-of-the-day?random=1")
     .then((response) => response.json())
     .then((data) => {
         todaysWord = data.word;
+        console.log(todaysWord)
     });
 
 
